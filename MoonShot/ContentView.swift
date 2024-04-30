@@ -10,8 +10,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(.example)
-                .frame(width: 300, height: 300)    .clipped()
+            Image("Example")
+                .resizable()
+                   .scaledToFit()
+                   .containerRelativeFrame(.horizontal) { size, axis in
+                           size * 0.8
+                       }
 
         }
         .padding()
