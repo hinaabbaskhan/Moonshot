@@ -10,9 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-                    Text("Tap Me")
-                        .navigationTitle("SwiftUI")
-                }
+            NavigationLink("Tap Me") {
+                Text("Detail View")
+            }
+            .navigationTitle("SwiftUI")
+        }
     }
 }
 
