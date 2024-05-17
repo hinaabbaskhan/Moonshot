@@ -23,39 +23,12 @@ struct Astronaut: Codable, Identifiable {
     let description: String
 }
 
-extension Bundle {
-    func decode(_ file: String) -> [String: Astronaut] {
-        guard let url = self.url(forResource: file, withExtension: nil) else {
-            fatalError("Failed to locate \(file) in bundle.")
-        }
 
-        guard let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load \(file) from bundle.")
-        }
-
-        let decoder = JSONDecoder()
-
-        guard let loaded = try? decoder.decode([String: Astronaut].self, from: data) else {
-            fatalError("Failed to decode \(file) from bundle.")
-        }
-
-        return loaded
-    }
-}
 struct ContentView: View {
-    
-    let layout = [
-        GridItem(.adaptive(minimum: 80, maximum: 120)),
-    ]
+    let astronauts = Bundle.main.decode("astronauts.json")
     
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHGrid(rows: layout) {
-                ForEach(0..<1000) {
-                    Text("Item \($0)")
-                }
-            }
-        }
+        Text(String(astronauts.count))
     }
 }
 
