@@ -40,14 +40,11 @@ struct ContentView: View {
                                         .frame(maxWidth: .infinity)
                                     }
                                 }
-                                .frame(maxWidth: .infinity)
                             }
                         }
                     }
                     .navigationTitle("Moonshot")
                 }
-//        Text(String(astronauts.count))
-
     }
 }
 
